@@ -44,17 +44,17 @@ def matchent(needle_file, threshval):
         if loop_time < 2:
             haystack_img = wincap.get_screenshot()
             needle_img = cv.imread(needle_file, cv.IMREAD_UNCHANGED)
-            res = cv.matchTemplate(haystack_img, needle_img, cv.TM_SQDIFF_NORMED)
+            res = cv.matchTemplate(haystack_img, needle_img, cv.TM_SQDIFF_NORMED) #results
             needle_w = 0.5 * needle_img.shape[1]
             needle_h = 0.5 * needle_img.shape[0]
-            min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
+            min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res) #gets  lowest, highest match. Lowest and highest (x,y) coords.
             rex = (min_loc[0])
             rey = (min_loc[1])
             x = rex + 6
             y = rey + 30
             xx = x + needle_w
             yy = y + needle_h
-            if min_val <= threshval:
+            if min_val <= threshval: #Checks to make sure match isnt false
                 locs = min_loc
                 print(needle_file, 'threshval', threshval, 'min_val', min_val)
                 return locs, xx, yy
@@ -78,12 +78,12 @@ def matchentplus(needle_file, threshval, starty, endy, startx, endx):
             needle_w = 0.5*needle_img.shape[1]
             needle_h = 0.5*needle_img.shape[0]
             min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
-            rex = (min_loc[0])
-            rey = (min_loc[1])
-            x = rex + 6
-            y = rey + 30
-            xx = x + needle_w
-            yy = y + needle_h
+            rex = (min_loc[0]) #gets width coord match
+            rey = (min_loc[1]) #gets height coord match
+            x = rex + 6 #width coord + 6
+            y = rey + 30 #height coord + 30
+            xx = x + needle_w #above + half of needle width (center) 0.5*needle_img.shape[1]
+            yy = y + needle_h  #above + half of needle height (center) 0.5*needle_img.shape[0]
             print('nomatch',needle_file, threshval, starty, endy, startx, endx, 'threshold=', min_val, max_val, min_loc)
             time.sleep(0.4)
             if min_val <= threshval:
