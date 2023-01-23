@@ -13,7 +13,7 @@ import pyautogui
 import random
 import decimal
 import PIL
-wincap = WindowCapture('RuneLite - blameslant')
+wincap = WindowCapture('windowname')
 animalfolder = 'shrimp'
 if animalfolder == 'shrimp':
     startfish = 'fisher/netfishshrimp.JPG'
