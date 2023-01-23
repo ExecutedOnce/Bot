@@ -9,7 +9,7 @@ import pyautogui
 import random
 import decimal
 import PIL
-wincap = WindowCapture('RuneLite - blameslant')
+wincap = WindowCapture('RuneLite - charname')
 animalfolder = 'cows'
 if animalfolder == 'cows':
     path1 = 'attackcows/attack.JPG'
